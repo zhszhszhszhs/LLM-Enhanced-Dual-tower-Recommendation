@@ -12,7 +12,7 @@ import pickle
 import os
 
 # 配置千问API
-dashscope.api_key = "sk-4cad0db934e146968786dad4983e52ef"
+dashscope.api_key = os.getenv("DASHSCOPE_API_KEY", "")
 
 
 def get_qwen_embedding(text, model='text-embedding-v4', expected_dim=1024, max_retries=3):

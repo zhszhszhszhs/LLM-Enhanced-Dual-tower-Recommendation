@@ -13,7 +13,7 @@ from dashscope import Generation
 from http import HTTPStatus
 
 # 配置千问API
-dashscope.api_key = "sk-4cad0db934e146968786dad4983e52ef"  # 请填入您的通义千问API密钥
+dashscope.api_key = os.getenv("DASHSCOPE_API_KEY", "")
 # 获取密钥: https://dashscope.console.aliyun.com/apiKey
 
 
