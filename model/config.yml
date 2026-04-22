@@ -1,0 +1,46 @@
+# 独立版本的 LightGCN Hypergraph 配置文件
+# 数据集配置
+data:
+  name: el  # 数据集名称: amazon, yelp, steam, el
+  data_dir: ../data  # 数据文件目录
+# 模型配置
+model:
+  name: lightgcn_hypergraph
+  embedding_size: 32
+  keep_rate: 0.8
+  # 通用参数（当数据集特定配置不存在时使用）
+  layer_num: 3
+  reg_weight: 1.0e-7
+  kd_weight: 1.0e-2
+  kd_temperature: 0.2
+  hypergraph_weight: 0.0
+  # 数据集特定配置（优先使用）
+  el:
+    layer_num: 3
+    reg_weight: 1.0e-8
+    kd_weight: 1.0e-3
+    kd_temperature: 0.1
+    hypergraph_weight: 0.5
+# 优化器配置
+optimizer:
+  name: adam
+  lr: 1.0e-3
+  weight_decay: 0
+# 训练配置
+train:
+  epoch: 3000
+  batch_size: 4096
+  loss: pairwise  #
+  test_step: 3  # 每多少个epoch评估一次
+  patience: 5  # 早停耐心值
+  save_model: true
+  reproducible: true
+  seed: 2023
+# 测试配置
+test:
+  metrics: [recall, ndcg]  # 评估指标
+  k: [5, 10, 20]  # Top-K值
+  batch_size: 1024
+# 设备配置
+device: cuda  # cuda 或 cpu
+cuda: "0"  # GPU编号

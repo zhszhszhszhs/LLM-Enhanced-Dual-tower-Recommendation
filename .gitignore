@@ -1,0 +1,21 @@
+dataset/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
