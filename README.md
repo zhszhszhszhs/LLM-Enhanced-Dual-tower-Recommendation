@@ -1,6 +1,5 @@
 # 大模型增强用户意图推荐
 
-这个 README 以**使用说明**为主，按“从数据到训练”给出最短可执行流程。
 
 ## 1. 项目结构
 
@@ -19,13 +18,12 @@ pip install torch numpy scipy tqdm pyyaml dashscope
 
 ### 2.2 配置千问密钥
 
-项目已移除明文密钥，运行前请设置环境变量：
 
 ```bash
 export DASHSCOPE_API_KEY="your_api_key"
 ```
 
-## 3. 数据集切换方式（重要）
+## 3. 数据集切换方式
 
 多个脚本底部都有：
 
@@ -39,13 +37,12 @@ DATASET = 'sports'
 - `toys`
 - `sports`
 
-你只需要改这个变量，脚本会自动切换对应的：
 
 - 输入数据路径 `dataset/{DATASET}/...`
 - prompt 路径 `generation/..._{DATASET}.txt`
 - 输出路径 `dataset/{DATASET}/processed/...`
 
-## 4. 一次完整流程（推荐顺序）
+## 4. 完整流程
 
 以下是从原始数据到模型训练的标准流程：
 
@@ -118,7 +115,6 @@ python model/train.py --config model/config.yml
 - `START_INDEX`：从第几个样本继续。
 - `APPEND_MODE = True`：追加写入，适合中断后继续。
 
-建议首次先用 `test`，确认格式后再切 `batch`。
 
 ## 7. 输出位置
 
