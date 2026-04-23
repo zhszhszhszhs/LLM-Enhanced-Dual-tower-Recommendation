@@ -2,12 +2,12 @@
 
 这个 README 以**使用说明**为主，按“从数据到训练”给出最短可执行流程。
 
-## 1. 项目结构（使用视角）
+## 1. 项目结构
 
 - `script/`：数据处理、调用 LLM、生成标签和 embedding 的脚本。
 - `generation/`：Prompt 模板（已按 `beauty / toys / sports` 拆分）。
 - `model/`：训练与评估代码（`train.py` + `config.yml`）。
-- `dataset/`：数据与中间产物目录（已在 `.gitignore` 中忽略）。
+- `dataset/`：数据与中间产物目录。
 
 ## 2. 环境准备
 
@@ -138,19 +138,3 @@ python model/train.py --config model/config.yml
 - **显存/内存不足**
   - 降低 `model/config.yml` 中 `train.batch_size`、`test.batch_size`。
 
-## 9. 最短上手（sports）
-
-```bash
-export DASHSCOPE_API_KEY="your_api_key"
-python script/generate_item_llm_input.py
-python script/generate_user_llm_input.py
-python script/generate_item_profiles.py
-python script/generate_user_profiles.py
-python script/generate_item_tags.py
-python script/generate_item_embeddings.py
-python script/generate_user_embeddings.py
-python script/generate_tag_embeddings.py
-python script/cluster_tags_and_analyze.py
-python script/generate_item_cluster_matrix.py
-python model/train.py --config model/config.yml
-```
